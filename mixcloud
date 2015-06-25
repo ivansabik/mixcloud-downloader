@@ -85,12 +85,12 @@ function parseFilename($url) {
 }
 
 function download($url) {
-	$urlPieces = explode("/", $url);
+	$urlPieces = explode(".", $url);
 	$fileExtension = array_pop($urlPieces);
-	$filename = $GLOBALS["filename"];
-	$filename = "$filename.$fileExtension";
+	$filename = $GLOBALS["filename"] . '.' . $fileExtension;
 	echo "File name: $filename" . PHP_EOL;
 	echo "Download URL: $url" . PHP_EOL;
 	echo "Downloading, please wait" . PHP_EOL;
-	exec("curl -o $filename.$fileExtension $url");
+	exec("curl -o $filename $url");
 }
+?>
